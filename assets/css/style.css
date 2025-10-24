@@ -332,10 +332,11 @@ body {
 
 /* div de informações de contato */
 .contact-info {
-    width: 43%;
+    width: 40%;
     margin: 0;
     box-sizing: border-box;
     display: inline-block;
+    
 }
 
 /* título da seção de informações de contato */
