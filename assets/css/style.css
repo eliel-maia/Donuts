@@ -332,7 +332,7 @@ body {
 
 /* div de informações de contato */
 .contact-info {
-    width: 45%;
+    width: 43%;
     margin: 0;
     box-sizing: border-box;
     display: inline-block;
@@ -361,6 +361,11 @@ body {
     display: inline-block;
 }
 
+
+.link-email {
+    color: var(--color1);
+    text-decoration: underline;
+}
 .contato {
     font-size:16px;    
     line-height:20px;
@@ -373,7 +378,8 @@ body {
 }
 
 .leia:hover,
-.contato:hover {
+.contato:hover,
+.link-email:hover {
     color:#bf96c7;
     text-decoration:underline;
 }
