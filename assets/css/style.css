@@ -1,0 +1,389 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Lato'); */
+
+:root {
+    /*--gradient-primary: linear-gradient(135deg, #70e3ea 0%, #4a90e2 100%);
+    --gradient-dark: linear-gradient(135deg, #34344e 0%, #2a2a3d 100%);
+    --gradient-header: linear-gradient(90deg, #2f2f46 0%, #1d2338 100%);*/
+    --color1: #fff;
+    --color2: #262626;
+    --color3: #6f6f6f;
+    --color4: #f00;
+    --color5: #1E1E1E;
+    --color6: #bf96c7;
+	--transparencia: rgba(0, 0, 0, 0.6); /* cor preta com 60% de transparência */
+    
+}
+
+/* reset básico */
+html, body {
+	width:100%;
+	padding:0;
+	margin:0;
+}
+
+/* configuração geral do body */
+body {
+	font: 16px/18px "Times New Roman", Times, serif;   
+	min-width:1024px;
+	background: var(--color2);
+    display: flex;
+    flex-direction: column; 
+} 
+
+/* menu de navegação centralizado */
+.menu {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 46px 0 70px 0; /* remover padding-left para centralizar */
+	gap: 8px; /* espaço entre itens, ajuste se quiser */
+}
+
+/* itens do menu */
+.menu li {
+	display: inline-flex;
+	align-items: center;
+	line-height: 24px;
+	background:url(../img/bar.png) 0 0 no-repeat;
+	padding:0 35px 0 50px;   /* mantém espaçamento dos títulos no menu */
+}
+
+/* link ativo do menu */
+.link-active {
+    text-decoration: none;
+    font-size:18px;
+    line-height:24px;
+    color: var(--color1);
+    font-style:italic;
+    display:inline-block;
+    cursor:pointer;
+    transition: color 0.2s ease;   
+}
+
+/* configuração dos links da nav */
+.link-nav  {
+	text-decoration: none;
+    font-size:18px;
+    line-height:24px;
+    color: var(--color1);
+    font-style:italic;
+    display:inline-block;
+	cursor:pointer;
+    transition: color 0.2s ease;
+    
+}
+
+/* hover dos links da nav */
+.menu a:hover {
+    color: var(--color6);
+}
+
+
+/* link home ativo do menu */
+.menu .link-active {
+    color: var(--color6);
+    text-decoration: none;
+}
+
+/* remove a barra do primeiro filho da classe menu - Inicio */
+.menu li:first-child {
+    background:none;        /* remove barra do primeiro item */
+    padding-left: 35px;    /* Ajusta o padding para manter o alinhamento */
+}
+
+/* item vazio para futuros menus */
+.menu .vazio {
+	background:transparent;
+    margin-left:200px;
+}
+
+
+/* imagem do slider embaixo do header - header com efeito de transparência */
+.header .nav {
+	position:absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+	width:75%;
+    max-width: 1200px;
+	height: 120px;
+	z-index:2;	/* Aumente o z-index para ficar em baixo da camada transparente */
+	background: var(--transparencia); /* adiciona transparência */
+	padding-bottom:1px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* linha sutil embaixo do menu */
+    backdrop-filter: blur(3px); /* adiciona desfoque ao fundo */
+}
+
+
+/* logotipo centralizado */
+.logo {
+    position: absolute;
+    top: 11px;              /* ajuste vertical se necessário */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* estilos mínimos do slider para o slide.js funcionar */
+.slider {
+    position: relative;
+    width: 100%;
+    height: 515px;      /* ajustar a altura das imagens */
+    overflow: hidden;
+}
+
+/* container dos slides */
+.slider .slide-content {
+    display: flex;      /* slides lado a lado */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    transition: transform 0.5s ease;
+}
+
+/* imagens dos slides */
+.slider .slide-content img {
+    width: 75%;         /* largura relativa */
+    max-width: 1200px;  /* largura máxima absoluta */
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;     /* centraliza horizontalmente */
+}
+
+/* cada slide */
+.slider .slide-content li {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* bolinhas (indicadores) do slider */
+.slider { position: relative; /* garante overlay das bolinhas */ }
+
+
+/* container das bolinhas */
+.dots-bottom {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 1001;
+  pointer-events: auto;
+  bottom: 12px;  /* posicionamento específico */
+}
+
+
+/* aparência das bolinhas */
+.dots-bottom .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color2);
+  border: 1px solid var(--color3);
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+}
+
+/* estado ativo */
+.dots-bottom .dot.active,
+.dots-bottom .dot:focus,
+.dots-bottom .dot:hover {
+  background: #1d1b1b;
+  transform: scale(1.15);
+  outline: none;
+}
+
+/* evita que as bolinhas sejam cobertas pela camada ::before do header */
+.header::before { z-index: 1; } /* já existe, apenas garantir ordem visual */
+
+
+
+/* Galeria: imagens lado a lado*/
+#gallery {
+    width: 75%;
+    max-width: 1200px;
+    margin: -1px auto 0;           /* top negativo de 1px para encostar no slide */
+    padding: 0; 
+    box-sizing: border-box;
+    background: url(../img/bg.jpg) 0 0 repeat;
+}
+/* título da galeria Donuts */
+.title-1 {
+    text-align: center;
+    font-style: italic;
+    margin: 0 0 20px 0;
+    padding-top: 20px;
+    font-size: 1.6em;
+    color: var(--color6);
+}
+/* grid de fotos */
+.gallery-photo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;        /* laterais e topo do grid */
+    margin: 0;
+    box-sizing: border-box;
+    width: calc(100% - 2px);      /* compensa os 1px laterais */
+}
+/* cada item da galeria */
+.gallery-photo li {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: calc(20% - 1px);       /* 5 colunas, compensando 1px lateral em cada lado */
+    gap: 0;
+    padding: 0;         /* garante 0px entre colunas visualmente */
+    margin: 0;
+}
+/* imagens da galeria */
+.gallery-photo img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+	margin-top: 1px; /* adiciona 1px entre as linhas */
+	
+}
+
+/* hover */
+.gallery-photo img:hover {
+    transform: scale(1.05);
+}
+
+
+/* Media query ajustada para manter proporção */
+@media (max-width: 1024px) {
+    #gallery {
+        width: 75%;
+        padding: 0;
+    }
+    
+    .gallery-photo li {
+        width: 20%;
+        padding: 0 1px;
+    }
+    
+    .gallery-photo img {
+        height: 100px;
+    }
+}
+
+/* seção de informações abaixo do slider */
+.info{
+    width: 75%;
+    max-width: 1200px;
+    margin: auto;           
+    background: url(../img/bg.jpg) 0 0 repeat;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* div de informações dos donuts */
+.donuts-info {
+    width: 55%;
+    margin: 0;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+/* título da seção de informações dos donuts */
+.title-2 {
+    text-align: left;
+    font-style: italic;
+    margin: 20px 0 20px 40px;
+    padding: 30px 20px 20px 0;
+    font-size: 1.6em;
+    color: var(--color6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* linha sutil embaixo do título */   
+    width: 83%;   
+}
+
+/* parágrafo da seção de informações dos donuts */
+.paragraph-1{
+    font-size: 1em;
+    line-height: 1.2em;
+    margin: 0 0 10px 40px;
+    padding: 0 40px 20px 0px;
+    color: var(--color3);
+    text-align: justify;
+}
+
+.leia {
+    font-size:16px;    
+    line-height:20px;
+    color: var(--color1);   
+    font-style:italic;
+    text-decoration:underline;
+    float: right;
+    width: auto;
+    margin: 0 40px 10px 0;
+}
+
+
+/* div de informações de contato */
+.contact-info {
+    width: 45%;
+    margin: 0;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+/* título da seção de informações de contato */
+.title-3 {
+    text-align: left;
+    font-style: italic;
+    margin: 20px 0 20px 40px;
+    padding: 30px 20px 20px 0;
+    font-size: 1.6em;
+    color: var(--color6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* linha sutil embaixo do título */ 
+    width: 78%;
+
+}
+
+/* parágrafo da seção de informações de contato */
+.paragraph-2, .paragraph-3 {
+    font-size: 1em;
+    line-height: 1.2em;
+    margin: 0 0 10px 40px;
+    padding: 0 40px 20px 0px;
+    color: var(--color3);
+    display: inline-block;
+}
+
+.contato {
+    font-size:16px;    
+    line-height:20px;
+    color: var(--color1);   
+    font-style:italic;
+    text-decoration:underline;
+    float: right;
+    width: auto;
+    margin: 55px 40px 10px 0;  
+}
+
+.leia:hover,
+.contato:hover {
+    color:#bf96c7;
+    text-decoration:underline;
+}
+
+
+
+
+
+
+
+
+
+
